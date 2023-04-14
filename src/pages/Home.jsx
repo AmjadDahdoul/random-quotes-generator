@@ -1,7 +1,13 @@
-import RandomQuote from "../layouts/RandomQuate";
+import QuoteResults from "../component/QuoteResults";
+import RandomQuote from "../component/RandomQuate";
 
 const Home = () => {
-  return <RandomQuote />;
+  return (
+    <>
+      <RandomQuote />
+      <QuoteResults />
+    </>
+  );
 };
 
 export default Home;

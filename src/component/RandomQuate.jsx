@@ -5,8 +5,10 @@ import { BiRefresh } from "react-icons/bi";
 const RandomQuote = () => {
   const [randomQuote, setRandomQuote] = useState([]);
   const [filterLimit, setFilterLimit] = useState(3);
+  const [loading, setLoading] = useState(false);
 
   const getRandomQuote = () => {
+    setLoading(true);
     const url = "https://api.quotable.io/quotes/random";
     axios
       .get(url, {
@@ -16,8 +18,12 @@ const RandomQuote = () => {
       })
       .then((res) => {
         setRandomQuote([...res.data]);
+        setLoading(false);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        setLoading(false);
+      });
   };
 
   useEffect(() => {
@@ -52,19 +58,24 @@ const RandomQuote = () => {
           <BiRefresh size={26} />
         </button>
       </div>
-
-      <div className='lg:flex lg:flex-row flex-wrap flex flex-col justify-evenly gap-3 pb-5 '>
-        {randomQuote.map((quote) => (
-          <div
-            className='rounded-3xl border shadow-lg lg:basis-1/6 m-5 p-5 grow '
-            key={quote._id}
-          >
-            <p className='font-semibold'>~{quote.author}</p>
-            <div className='divider'></div>
-            <p className='font-mono'>{quote.content}</p>
+      {loading ? (
+        "Loading..."
+      ) : (
+        <div>
+          <div className='lg:flex lg:flex-row flex-wrap flex flex-col justify-evenly gap-3 pb-5 '>
+            {randomQuote.map((quote) => (
+              <div
+                className='rounded-3xl border shadow-lg lg:basis-1/6 m-5 p-5 grow '
+                key={quote._id}
+              >
+                <p className='font-semibold'>~{quote.author}</p>
+                <div className='divider'></div>
+                <p className='font-mono'>{quote.content}</p>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
+      )}
     </div>
   );
 };
