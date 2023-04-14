@@ -4,7 +4,9 @@ import { BiRefresh } from "react-icons/bi";
 
 const RandomQuote = () => {
   const [randomQuote, setRandomQuote] = useState([]);
-  const [filterLimit, setFilterLimit] = useState(3);
+  const [filterLimit, setFilterLimit] = useState(
+    JSON.parse(localStorage.getItem("displayLimit"))
+  );
   const [loading, setLoading] = useState(false);
 
   const getRandomQuote = () => {
@@ -25,9 +27,9 @@ const RandomQuote = () => {
         setLoading(false);
       });
   };
-
   useEffect(() => {
     getRandomQuote();
+    localStorage.setItem("displayLimit", JSON.stringify(filterLimit));
   }, [filterLimit]);
 
   return (
@@ -39,7 +41,7 @@ const RandomQuote = () => {
           max='5'
           className='range'
           step='1'
-          value={filterLimit}
+          value={!!filterLimit ? filterLimit : 1}
           onChange={(e) => setFilterLimit(e.target.value)}
         />
         <div className='w-full flex justify-between text-xs px-2'>

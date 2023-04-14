@@ -1,4 +1,5 @@
 import ToggleTheme from "./ToggleTheme";
+import NavSearch from "./NavSearch";
 const Navbar = () => {
   return (
     <div className='navbar bg-base-100 rounded-b-lg shadow-md '>
@@ -34,13 +35,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className='navbar-center'>
-        <div className='form-control w-96'>
-          <input
-            type='text'
-            placeholder='Search'
-            className='input input-bordered'
-          />
-        </div>
+        <NavSearch />
       </div>
       <div className='navbar-end'>
         <ToggleTheme />
