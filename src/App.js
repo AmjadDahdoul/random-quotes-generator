@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import Navbar from "./layouts/Navbar";
 import { QuoteProvider } from "./component/context/QuoteContext";
 import RandomQuote from "./component/RandomQuote";
-import QuoteResults from "./component/QuoteResults";
+import QuoteResults from "./pages/QuoteResults";
 import About from "./pages/About";
 import FavoriteQuotes from "./pages/FavoriteQuotes";
 import ErrorPage from "./pages/ErrorPage";

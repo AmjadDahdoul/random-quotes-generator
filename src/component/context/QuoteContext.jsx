@@ -5,9 +5,11 @@ const QuoteContext = createContext();
 
 export const QuoteProvider = ({ children }) => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchLimit, setSearchLimit] = useState(10);
+  const [searchLimit, setSearchLimit] = useState(25);
   const [pages, setPages] = useState(1);
   const [searchResults, setSearchResults] = useState([]);
+  const [allQuotes, setAllQuotes] = useState([]);
+  const [hasMore, setHasMore] = useState(false);
 
   const value = {
     searchQuery,
@@ -18,6 +20,10 @@ export const QuoteProvider = ({ children }) => {
     setPages,
     searchResults,
     setSearchResults,
+    allQuotes,
+    setAllQuotes,
+    hasMore,
+    setHasMore,
   };
 
   const getSearchedQuotes = () => {
@@ -38,10 +44,33 @@ export const QuoteProvider = ({ children }) => {
       });
   };
 
+  const getAllQuotes = () => {
+    const url = "https://api.quotable.io/quotes/";
+    axios
+      .get(url, {
+        params: {
+          query: searchQuery,
+          limit: searchLimit,
+          page: pages,
+        },
+      })
+      .then((res) => {
+        const data = res.data.results;
+        setAllQuotes((pre) => [...pre, ...data]);
+        allQuotes.length !== res.data.totalCount
+          ? setHasMore(true)
+          : setHasMore(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   useEffect(() => {
-    if (searchQuery.length < 1 && searchQuery.trim() === "") return;
-    getSearchedQuotes();
-  }, [searchQuery]);
+    getAllQuotes();
+    // if (searchQuery.length < 1 && searchQuery.trim() === "") return;
+    // getSearchedQuotes();
+  }, [pages]);
 
   return (
     <QuoteContext.Provider value={value}>{children}</QuoteContext.Provider>
