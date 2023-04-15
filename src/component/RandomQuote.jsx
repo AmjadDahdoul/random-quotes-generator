@@ -67,7 +67,7 @@ const RandomQuote = () => {
           <div className='lg:flex lg:flex-row flex-wrap flex flex-col justify-evenly gap-3 pb-5 '>
             {randomQuote.map((quote) => (
               <div
-                className='rounded-3xl border shadow-lg lg:basis-1/6 m-5 p-5 grow '
+                className='rounded-3xl border shadow-lg lg:basis-1/3 m-5 p-5 grow '
                 key={quote._id}
               >
                 <p className='font-semibold'>~{quote.author}</p>

@@ -1,6 +1,10 @@
 import ToggleTheme from "./ToggleTheme";
 import NavSearch from "./NavSearch";
+import { useLocation } from "react-router";
+import { Link } from "react-router-dom";
+import { BiSearchAlt } from "react-icons/bi";
 const Navbar = () => {
+  let location = useLocation();
   return (
     <div className='navbar bg-base-100 rounded-b-lg shadow-md '>
       <div className='navbar-start'>
@@ -26,16 +30,25 @@ const Navbar = () => {
             className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52'
           >
             <li>
-              <a>Home</a>
+              <Link to='/'>Home</Link>
             </li>
             <li>
-              <a>About</a>
+              <Link to='/about'>About</Link>
             </li>
           </ul>
         </div>
       </div>
       <div className='navbar-center'>
-        <NavSearch />
+        {location.pathname === "/quotes" ? (
+          <NavSearch />
+        ) : (
+          <Link to='/quotes'>
+            <div className='flex justify-center'>
+              <BiSearchAlt size={25} />
+              <h3 className='font-mono text-xl pl-2'>Search</h3>
+            </div>
+          </Link>
+        )}
       </div>
       <div className='navbar-end'>
         <ToggleTheme />
