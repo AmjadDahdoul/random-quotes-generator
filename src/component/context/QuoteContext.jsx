@@ -1,5 +1,6 @@
 import { useState, createContext, useEffect } from "react";
 import axios from "axios";
+import { checkFavorite } from "../Helpers/FavoriteManager";
 
 const QuoteContext = createContext();
 

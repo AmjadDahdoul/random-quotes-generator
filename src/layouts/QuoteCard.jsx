@@ -1,14 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
+import {
+  addToFavorite,
+  checkFavorite,
+  removeFromFavorite,
+} from "../component/Helpers/FavoriteManager";
 
 const QuoteCard = ({ quotes }) => {
+  const [isFavorite, setIsFavorite] = useState(checkFavorite(quotes));
   const tags = [...quotes.tags];
-  const [isFavorite, setIsFavorite] = useState(false);
 
-  const handleFavorite = (e) => {
+  const handleFavorite = (quotes) => {
+    if (isFavorite) {
+      removeFromFavorite(quotes);
+    } else {
+      addToFavorite(quotes);
+    }
     setIsFavorite(!isFavorite);
-    localStorage.setItem("fav", JSON.stringify(quotes));
   };
+
   return (
     <div className='shadow-xl rounded-3xl border-t-2 m-5 text-center p-5 grow lg:w-1/3 flex flex-col justify-between t'>
       <div>
@@ -33,15 +43,15 @@ const QuoteCard = ({ quotes }) => {
           </div>
 
           <div className='self-end'>
-            <button onClick={handleFavorite}>
-              {!isFavorite ? (
-                <MdFavoriteBorder size={30} />
-              ) : (
+            <button onClick={() => handleFavorite(quotes)}>
+              {isFavorite ? (
                 <MdFavorite
                   size={30}
                   color='red'
                   className='shadow-2xl shadow-red-700'
                 />
+              ) : (
+                <MdFavoriteBorder size={30} />
               )}
             </button>
           </div>

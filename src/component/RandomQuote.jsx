@@ -34,7 +34,7 @@ const RandomQuote = () => {
   }, [filterLimit]);
 
   return (
-    <div className='text-center m-5 rounded-3xl'>
+    <div className='text-center m-5 rounded-3xl '>
       <div className='m-5'>
         <input
           type='range'
@@ -45,7 +45,7 @@ const RandomQuote = () => {
           value={!!filterLimit ? filterLimit : 1}
           onChange={(e) => setFilterLimit(e.target.value)}
         />
-        <div className='w-full flex justify-between text-xs px-2'>
+        <div className='w-full flex justify-between text-xs px-2 '>
           <span>1</span>
           <span>2</span>
           <span>3</span>
