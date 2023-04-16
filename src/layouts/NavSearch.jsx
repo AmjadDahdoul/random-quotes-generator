@@ -13,7 +13,7 @@ const NavSearch = () => {
         value={searchQuery}
         className='input input-bordered font-medium'
         onChange={(e) => setSearchQuery(e.target.value)}
-        autoFocus
+        //autoFocus
       />
     </div>
   );

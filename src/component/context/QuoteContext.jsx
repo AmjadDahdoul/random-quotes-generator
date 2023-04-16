@@ -5,7 +5,7 @@ const QuoteContext = createContext();
 
 export const QuoteProvider = ({ children }) => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchLimit, setSearchLimit] = useState(25);
+  const [searchLimit, setSearchLimit] = useState(10);
   const [pages, setPages] = useState(1);
   const [searchResults, setSearchResults] = useState([]);
   const [allQuotes, setAllQuotes] = useState([]);
@@ -37,7 +37,12 @@ export const QuoteProvider = ({ children }) => {
         },
       })
       .then((res) => {
-        setSearchResults(res.data.results);
+        const data = res.data.results;
+        setAllQuotes((prev) => [...prev, ...data]);
+        allQuotes.length !== res.data.totalCount
+          ? setHasMore(true)
+          : setHasMore(false);
+        console.log(hasMore);
       })
       .catch((error) => {
         console.log(error);
@@ -56,7 +61,7 @@ export const QuoteProvider = ({ children }) => {
       })
       .then((res) => {
         const data = res.data.results;
-        setAllQuotes((pre) => [...pre, ...data]);
+        setAllQuotes((prev) => [...prev, ...data]);
         allQuotes.length !== res.data.totalCount
           ? setHasMore(true)
           : setHasMore(false);

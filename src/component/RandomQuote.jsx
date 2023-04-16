@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { BiRefresh } from "react-icons/bi";
+import QuoteCard from "../layouts/QuoteCard";
 
 const RandomQuote = () => {
   const [randomQuote, setRandomQuote] = useState([]);
@@ -65,15 +66,8 @@ const RandomQuote = () => {
       ) : (
         <div>
           <div className='lg:flex lg:flex-row flex-wrap flex flex-col justify-evenly gap-3 pb-5 '>
-            {randomQuote.map((quote) => (
-              <div
-                className='rounded-3xl border shadow-lg lg:basis-1/3 m-5 p-5 grow '
-                key={quote._id}
-              >
-                <p className='font-semibold'>~{quote.author}</p>
-                <div className='divider'></div>
-                <p className='font-mono'>{quote.content}</p>
-              </div>
+            {randomQuote.map((quote, index) => (
+              <QuoteCard quotes={quote} key={index} />
             ))}
           </div>
         </div>
