@@ -9,7 +9,7 @@ const FavoriteQuotes = () => {
     <div className='lg:flex lg:flex-wrap lg:justify-evenly rounded-3xl m-5 gap-3'>
       <button
         className='btn btn-primary'
-        onClick={() => setFavorite(localStorage.clear())}
+        onClick={() => setFavorite(localStorage.removeItem("favorite"))}
       >
         clear
       </button>

@@ -7,7 +7,7 @@ export const addToFavorite = (quote) => {
     localStorage.setItem('favorite', JSON.stringify(favQuotes))
 }
 
-//
+
 export const removeFromFavorite = (quote) => {
     favQuotes = favQuotes.filter((item) => item._id !== quote._id)
     localStorage.setItem('favorite', JSON.stringify(favQuotes))
