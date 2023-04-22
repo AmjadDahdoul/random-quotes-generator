@@ -1,6 +1,6 @@
 import { useState, createContext, useEffect } from "react";
 import axios from "axios";
-import { checkFavorite } from "../Helpers/FavoriteManager";
+import { debounce } from "lodash";
 
 const QuoteContext = createContext();
 
@@ -43,7 +43,6 @@ export const QuoteProvider = ({ children }) => {
         allQuotes.length !== res.data.totalCount
           ? setHasMore(true)
           : setHasMore(false);
-        console.log(hasMore);
       })
       .catch((error) => {
         console.log(error);
@@ -72,10 +71,34 @@ export const QuoteProvider = ({ children }) => {
       });
   };
 
+  const handleSearch = () => {
+    if (searchQuery.length >= 3 && searchQuery.trim() !== "") {
+      setPages(1);
+      setAllQuotes([]);
+      getSearchedQuotes();
+    } else {
+      setPages(1);
+      setAllQuotes([]);
+      getAllQuotes();
+    }
+  };
+
   useEffect(() => {
-    getAllQuotes();
-    // if (searchQuery.length < 1 && searchQuery.trim() === "") return;
-    // getSearchedQuotes();
+    const delayedSearch = setTimeout(() => {
+      handleSearch();
+    }, 300);
+
+    return () => {
+      clearTimeout(delayedSearch);
+    };
+  }, [searchQuery]);
+
+  useEffect(() => {
+    if (searchQuery.length > 2 && searchQuery.trim() !== "") {
+      getSearchedQuotes();
+    } else {
+      getAllQuotes();
+    }
   }, [pages]);
 
   return (

@@ -3,7 +3,6 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 import QuoteContext from "../component/context/QuoteContext";
 import QuoteCard from "../layouts/QuoteCard";
-import { checkFavorite } from "../component/Helpers/FavoriteManager";
 
 const QuoteResults = () => {
   const { searchResults, allQuotes, setPages, hasMore } =
@@ -18,7 +17,11 @@ const QuoteResults = () => {
         loader={<h1 className='text-center py-3'>Loading...</h1>}
         endMessage={
           <p style={{ textAlign: "center" }}>
-            <b>Yay! You have seen it all</b>
+            {allQuotes.length == 0 ? (
+              <b>There are no search results.</b>
+            ) : (
+              <b>You have seen it all</b>
+            )}
           </p>
         }
       >

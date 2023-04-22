@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import QuoteCard from "../layouts/QuoteCard";
 import {
   clearFavorite,
@@ -7,12 +7,18 @@ import {
 
 const FavoriteQuotes = () => {
   const [favorite, setFavorite] = useState(getFavorite());
-  const favoriteCount = favorite.length;
+  const [favoriteCount, setFavoriteCount] = useState(0);
+
+  useEffect(() => {
+    if (favorite) {
+      setFavoriteCount(favorite.length);
+    }
+  }, [favorite]);
 
   const removeFavorite = () => {
     if (
       window.confirm(
-        `After clicking ok ${favoriteCount} quotes will be removed from your favorite.`
+        `After clicking OK, ${favoriteCount} quote(s) will be removed from your favorites. Are you sure?`
       )
     ) {
       clearFavorite();
@@ -22,22 +28,22 @@ const FavoriteQuotes = () => {
 
   return (
     <div>
-      {favorite !== null && favorite.length > 0 ? (
-        <div className='lg:flex lg:flex-wrap lg:justify-evenly rounded-3xl m-5 gap-3'>
+      {favorite && favorite.length > 0 ? (
+        <div>
           <div className='text-center space-y-5'>
             <button className='btn btn-primary' onClick={removeFavorite}>
-              clear
+              Clear
             </button>
-
-            <p>{favoriteCount} Quote(s) in favorite</p>
+            <p>{favoriteCount} Quote(s) in favorites</p>
           </div>
-
-          {favorite.map((fav, index) => (
-            <QuoteCard quotes={fav} key={index} />
-          ))}
+          <div className='lg:flex lg:flex-wrap lg:justify-evenly rounded-3xl m-5 gap-3'>
+            {favorite.map((quote, index) => (
+              <QuoteCard quotes={quote} key={index} />
+            ))}
+          </div>
         </div>
       ) : (
-        <h3 className='text-center text-3xl'>Favorite is empty...</h3>
+        <h3 className='text-center text-3xl'>Favorites are empty...</h3>
       )}
     </div>
   );
