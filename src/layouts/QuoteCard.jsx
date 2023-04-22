@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import {
   addToFavorite,

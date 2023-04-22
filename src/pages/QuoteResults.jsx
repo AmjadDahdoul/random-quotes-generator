@@ -1,12 +1,14 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 import QuoteContext from "../component/context/QuoteContext";
 import QuoteCard from "../layouts/QuoteCard";
+import { checkFavorite } from "../component/Helpers/FavoriteManager";
 
 const QuoteResults = () => {
   const { searchResults, allQuotes, setPages, hasMore } =
     useContext(QuoteContext);
+
   return (
     <div className='lg:flex lg:flex-wrap lg:justify-evenly rounded-3xl m-5 gap-3'>
       <InfiniteScroll

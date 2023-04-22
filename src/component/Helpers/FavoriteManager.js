@@ -3,7 +3,7 @@ let favQuotes = JSON.parse(localStorage.getItem('favorite')) || []
 export const addToFavorite = (quote) => {
     const findQuote = favQuotes.find((find) => find._id === quote._id)
     if (findQuote) return
-    favQuotes.push(quote)
+    favQuotes.push({ ...quote, favDate: new Date() })
     localStorage.setItem('favorite', JSON.stringify(favQuotes))
 }
 
@@ -18,6 +18,11 @@ export const getFavorite = () => {
 }
 
 export const checkFavorite = (quote) => {
-    const findQuote = favQuotes.find(find => find._id === quote)
+    const findQuote = favQuotes.find(find => find._id === quote._id)
     return findQuote !== undefined
+}
+
+export const clearFavorite = () => {
+    favQuotes = []
+    localStorage.setItem('favorite', JSON.stringify(favQuotes))
 }
