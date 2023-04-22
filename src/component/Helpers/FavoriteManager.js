@@ -1,4 +1,4 @@
-let favQuotes = JSON.parse(localStorage.getItem('favorite')) || []
+let favQuotes = JSON.parse(localStorage.getItem('favorite')) || [];
 
 export const addToFavorite = (quote) => {
     const findQuote = favQuotes.find((find) => find._id === quote._id)
