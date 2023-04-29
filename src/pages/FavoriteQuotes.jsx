@@ -16,14 +16,8 @@ const FavoriteQuotes = () => {
   }, [favorite]);
 
   const removeFavorite = () => {
-    if (
-      window.confirm(
-        `After clicking OK, ${favoriteCount} quote(s) will be removed from your favorites. Are you sure?`
-      )
-    ) {
-      clearFavorite();
-      setFavorite([]);
-    }
+    clearFavorite();
+    setFavorite([]);
   };
 
   return (
@@ -31,11 +25,36 @@ const FavoriteQuotes = () => {
       {favorite && favorite.length > 0 ? (
         <div>
           <div className='text-center space-y-5'>
-            <button className='btn btn-primary' onClick={removeFavorite}>
+            <label htmlFor='my-modal' className='btn'>
               Clear
-            </button>
-            <p>{favoriteCount} Quote(s) in favorites</p>
+            </label>
+            <input type='checkbox' id='my-modal' className='modal-toggle' />
+            <div className='modal modal-bottom sm:modal-middle'>
+              <div className='modal-box'>
+                <label
+                  htmlFor='my-modal'
+                  className='btn btn-sm btn-circle absolute right-2 top-2'
+                >
+                  ✕
+                </label>
+
+                <h3 className='font-bold text-lg'>Clear All favorite quotes</h3>
+                <p className='py-4'>
+                  Are you sure you want to clear {favoriteCount} quote(s)?
+                </p>
+                <div className='modal-action'>
+                  <label
+                    htmlFor='my-modal'
+                    className='btn'
+                    onClick={removeFavorite}
+                  >
+                    yes
+                  </label>
+                </div>
+              </div>
+            </div>
           </div>
+
           <div className='lg:flex lg:flex-wrap lg:justify-evenly rounded-3xl m-5 gap-3'>
             {favorite.map((quote, index) => (
               <QuoteCard quotes={quote} key={index} />
@@ -43,7 +62,7 @@ const FavoriteQuotes = () => {
           </div>
         </div>
       ) : (
-        <h3 className='text-center text-3xl'>Favorites are empty...</h3>
+        <h3 className='text-center text-3xl'>Favorite is empty...</h3>
       )}
     </div>
   );
