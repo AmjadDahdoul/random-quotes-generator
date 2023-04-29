@@ -20,7 +20,7 @@ const QuoteCard = ({ quotes }) => {
   };
 
   return (
-    <div className='shadow-xl rounded-3xl border-t-2 m-5 text-center p-5 grow lg:w-1/3 flex flex-col justify-between t'>
+    <div className='shadow-xl rounded-3xl border-t-2 m-5 text-center p-5 grow lg:w-1/3 flex flex-col justify-between'>
       <div>
         <h2 className='text-2xl font-serif p-2'>~{quotes.author}</h2>
         <div className='divider'></div>

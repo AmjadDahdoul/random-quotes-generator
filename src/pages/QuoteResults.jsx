@@ -3,6 +3,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 import QuoteContext from "../component/context/QuoteContext";
 import QuoteCard from "../layouts/QuoteCard";
+import SkeletonCard from "../layouts/SkeletonCard";
 
 const QuoteResults = () => {
   const { searchResults, allQuotes, setPages, hasMore } =
@@ -14,7 +15,11 @@ const QuoteResults = () => {
         dataLength={allQuotes.length}
         next={() => setPages((prev) => prev + 1)}
         hasMore={hasMore}
-        loader={<h1 className='text-center py-3'>Loading...</h1>}
+        loader={
+          <div className='m-5'>
+            <SkeletonCard />
+          </div>
+        }
         endMessage={
           <p style={{ textAlign: "center" }}>
             {allQuotes.length == 0 ? (
