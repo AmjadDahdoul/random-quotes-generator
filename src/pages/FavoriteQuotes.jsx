@@ -4,6 +4,7 @@ import {
   clearFavorite,
   getFavorite,
 } from "../component/Helpers/FavoriteManager";
+import ScrollTop from "../layouts/ScrollTop";
 
 const FavoriteQuotes = () => {
   const [favorite, setFavorite] = useState(getFavorite());
@@ -22,12 +23,14 @@ const FavoriteQuotes = () => {
 
   return (
     <div>
+      <ScrollTop />
       {favorite && favorite.length > 0 ? (
         <div>
           <div className='text-center space-y-5'>
             <label htmlFor='my-modal' className='btn btn-primary'>
               Clear
             </label>
+            <div className='divider'>{favoriteCount} Quotes</div>
             <input type='checkbox' id='my-modal' className='modal-toggle' />
             <div className='modal modal-bottom sm:modal-middle'>
               <div className='modal-box'>
