@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { BiRefresh } from "react-icons/bi";
 import QuoteCard from "../layouts/QuoteCard";
+import SkeletonCard from "../layouts/SkeletonCard";
 
 const RandomQuote = () => {
   const [randomQuote, setRandomQuote] = useState([]);
@@ -62,7 +63,7 @@ const RandomQuote = () => {
         </button>
       </div>
       {loading ? (
-        "Loading..."
+        <SkeletonCard />
       ) : (
         <div>
           <div className='lg:flex lg:flex-row flex-wrap flex flex-col justify-evenly gap-3 pb-5 '>

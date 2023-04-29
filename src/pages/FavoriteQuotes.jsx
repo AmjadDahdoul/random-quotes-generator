@@ -25,7 +25,7 @@ const FavoriteQuotes = () => {
       {favorite && favorite.length > 0 ? (
         <div>
           <div className='text-center space-y-5'>
-            <label htmlFor='my-modal' className='btn'>
+            <label htmlFor='my-modal' className='btn btn-primary'>
               Clear
             </label>
             <input type='checkbox' id='my-modal' className='modal-toggle' />

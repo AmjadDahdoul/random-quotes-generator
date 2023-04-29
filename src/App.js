@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import Navbar from "./layouts/Navbar";
 import { QuoteProvider } from "./component/context/QuoteContext";
-import RandomQuote from "./component/RandomQuote";
+import RandomQuote from "./pages/RandomQuote";
 import QuoteResults from "./pages/QuoteResults";
 import About from "./pages/About";
 import FavoriteQuotes from "./pages/FavoriteQuotes";
