@@ -38,7 +38,7 @@ const FavoriteQuotes = () => {
                   ✕
                 </label>
 
-                <h3 className='font-bold text-lg'>Clear All favorite quotes</h3>
+                <h3 className='font-bold text-lg'>Clear all favorite quotes</h3>
                 <p className='py-4'>
                   Are you sure you want to clear {favoriteCount} quote(s)?
                 </p>
