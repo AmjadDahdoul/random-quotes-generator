@@ -8,7 +8,7 @@ const NavSearch = () => {
   return (
     <div className='form-control w-fit lg:w-96'>
       <input
-        type='text'
+        type='search'
         placeholder='Search'
         value={searchQuery}
         className='input input-bordered font-medium'

@@ -2,7 +2,7 @@ import { MdFavoriteBorder } from "react-icons/md";
 
 const SkeletonCard = () => {
   return (
-    <div className='shadow-xl rounded-3xl border-t-2 m-5 p-5 grow flex flex-col justify-between animate-pulse'>
+    <div className='shadow-xl rounded-3xl border-t-2 m-5 p-5 grow flex flex-col justify-between '>
       <div className='animate-pulse'>
         <div className='w-full shadow-2xl h-3 bg-slate-400 rounded-3xl'></div>
         <div className='divider'></div>
