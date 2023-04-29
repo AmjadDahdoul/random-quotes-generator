@@ -40,7 +40,7 @@ export const QuoteProvider = ({ children }) => {
       .then((res) => {
         const data = res.data.results;
         setAllQuotes((prev) => [...prev, ...data]);
-        allQuotes.length !== res.data.totalCount
+        allQuotes.length < res.data.totalCount
           ? setHasMore(true)
           : setHasMore(false);
       })
@@ -72,7 +72,7 @@ export const QuoteProvider = ({ children }) => {
   };
 
   const handleSearch = () => {
-    if (searchQuery.length >= 3 && searchQuery.trim() !== "") {
+    if (searchQuery.length >= 1 && searchQuery.trim() !== "") {
       setPages(1);
       setAllQuotes([]);
       getSearchedQuotes();

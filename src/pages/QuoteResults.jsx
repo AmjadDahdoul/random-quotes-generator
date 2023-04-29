@@ -21,7 +21,7 @@ const QuoteResults = () => {
         </div>
       }
       endMessage={
-        <p style={{ textAlign: "center" }}>
+        <p style={{ textAlign: "center", paddingBottom: "20px" }}>
           {allQuotes.length === 0 ? (
             <b>There are no search results.</b>
           ) : (
@@ -30,19 +30,18 @@ const QuoteResults = () => {
         </p>
       }
     >
-      <ScrollToTop
-        smooth
-        style={{
-          backgroundColor: "transparent",
-          border: "3px solid",
-          boxShadow: "none",
-          borderRadius: "50%",
-          padding: "2px",
-        }}
-        component={<FaArrowUp size={"100%"} />}
-      />
-
       <div className='lg:flex lg:flex-wrap lg:justify-evenly'>
+        <ScrollToTop
+          smooth
+          style={{
+            backgroundColor: "transparent",
+            border: "3px solid",
+            boxShadow: "none",
+            borderRadius: "50%",
+            padding: "2px",
+          }}
+          component={<FaArrowUp size={"100%"} />}
+        />
         {allQuotes.map((result, index) => (
           <QuoteCard quotes={result} key={index} />
         ))}
