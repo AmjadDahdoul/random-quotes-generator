@@ -3,6 +3,8 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import QuoteContext from "../component/context/QuoteContext";
 import QuoteCard from "../layouts/QuoteCard";
 import SkeletonCard from "../layouts/SkeletonCard";
+import ScrollToTop from "react-scroll-to-top";
+import { FaArrowUp } from "react-icons/fa";
 
 const QuoteResults = () => {
   const { allQuotes, setPages, hasMore } = useContext(QuoteContext);
@@ -28,6 +30,16 @@ const QuoteResults = () => {
         </p>
       }
     >
+      <ScrollToTop
+        smooth
+        style={{
+          backgroundColor: "transparent",
+          border: "1px solid",
+          boxShadow: "none",
+        }}
+        component={<FaArrowUp size={"100%"} />}
+      />
+
       <div className='lg:flex lg:flex-wrap lg:justify-evenly'>
         {allQuotes.map((result, index) => (
           <QuoteCard quotes={result} key={index} />

@@ -4,7 +4,7 @@ const About = () => {
     <div className='flex flex-col place-content-center text-center'>
       <h1 className='text-6xl mb-4'>Random Quotes Generator</h1>
       <p className='mb-4 text-2xl font-light'>
-        A React app to brows and generat random quotes
+        A React app to browse and generat random quotes
       </p>
       <p className='text-lg'>
         Created by <span className='font-bold text-xl'>Amjad Dahdoul</span>
