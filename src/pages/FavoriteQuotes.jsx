@@ -5,6 +5,7 @@ import {
   getFavorite,
 } from "../component/Helpers/FavoriteManager";
 import ScrollTop from "../layouts/ScrollTop";
+import { MdFavorite } from "react-icons/md";
 
 const FavoriteQuotes = () => {
   const [favorite, setFavorite] = useState(getFavorite());
@@ -30,7 +31,12 @@ const FavoriteQuotes = () => {
             <label htmlFor='my-modal' className='btn btn-primary'>
               Clear
             </label>
-            <div className='divider'>{favoriteCount} Quotes</div>
+            <div className='divider'>
+              <p className='flex gap-2'>
+                {favoriteCount} Quotes
+                <MdFavorite size={25} color='red' className='animate-pulse' />
+              </p>
+            </div>
             <input type='checkbox' id='my-modal' className='modal-toggle' />
             <div className='modal modal-bottom sm:modal-middle'>
               <div className='modal-box'>
