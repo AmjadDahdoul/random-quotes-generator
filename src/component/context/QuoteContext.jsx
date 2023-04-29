@@ -62,7 +62,7 @@ export const QuoteProvider = ({ children }) => {
       .then((res) => {
         const data = res.data.results;
         setAllQuotes((prev) => [...prev, ...data]);
-        allQuotes.length !== res.data.totalCount
+        allQuotes.length < res.data.totalCount
           ? setHasMore(true)
           : setHasMore(false);
       })
