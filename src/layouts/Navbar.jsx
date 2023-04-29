@@ -6,7 +6,7 @@ import { BiSearchAlt } from "react-icons/bi";
 const Navbar = () => {
   let location = useLocation();
   return (
-    <div className='navbar bg-base-100 rounded-b-lg shadow-md '>
+    <div className='navbar bg-base-100 rounded-b-lg shadow-md sticky top-0 z-50'>
       <div className='navbar-start'>
         <div className='dropdown'>
           <label tabIndex={0} className='btn btn-ghost btn-circle'>

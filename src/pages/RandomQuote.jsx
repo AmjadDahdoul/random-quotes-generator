@@ -35,8 +35,8 @@ const RandomQuote = () => {
   }, [filterLimit]);
 
   return (
-    <div className='text-center m-5 rounded-3xl '>
-      <div className='m-5'>
+    <div className='text-center m-5 rounded-3xl'>
+      <div className='m-5 overflow-hidden'>
         <input
           type='range'
           min='1'
