@@ -6,7 +6,7 @@ const NavSearch = () => {
   const { searchQuery, setSearchQuery } = useContext(QuoteContext);
 
   return (
-    <div className='form-control w-fit lg:w-96'>
+    <div className='form-control w'>
       <input
         type='search'
         placeholder='Search'
