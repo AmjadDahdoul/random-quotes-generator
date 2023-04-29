@@ -13,6 +13,8 @@ const About = () => {
         <a target='_blank' href='https://github.com/AmjadDahdoul'>
           <FaGithub size={35} />
         </a>
+        <div className='divider divider-horizontal'></div>
+
         <a target='_blank' href='https://www.linkedin.com/in/amjaddahdoul/'>
           <FaLinkedin size={35} />
         </a>
