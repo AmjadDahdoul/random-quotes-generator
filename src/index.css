@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .active{
-    border-bottom: 4px solid rgb(114, 250, 189);
+    border-bottom: 4px solid #189AB4;
 }
