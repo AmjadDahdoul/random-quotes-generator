@@ -47,7 +47,7 @@ const QuoteCard = ({ quotes }) => {
               {isFavorite ? (
                 <MdFavorite
                   size={30}
-                  color='red'
+                  color='#DC4731'
                   className='shadow-2xl shadow-red-700'
                 />
               ) : (

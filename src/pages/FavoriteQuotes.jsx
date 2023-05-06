@@ -34,7 +34,11 @@ const FavoriteQuotes = () => {
             <div className='divider'>
               <p className='flex gap-2'>
                 {favoriteCount} Quotes
-                <MdFavorite size={25} color='red' className='animate-pulse' />
+                <MdFavorite
+                  size={25}
+                  color='#DC4731'
+                  className='animate-pulse'
+                />
               </p>
             </div>
             <input type='checkbox' id='my-modal' className='modal-toggle' />
